@@ -11,6 +11,14 @@
 |
 */
 
+Route::get('/blank', function () {
+    return view('blank');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+
