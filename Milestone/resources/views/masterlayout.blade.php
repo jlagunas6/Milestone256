@@ -46,7 +46,7 @@
 				<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
 				</li>
 			</ul>
-			<li class="nav-item active"><a class="nav-link" href="signin">Sign In
+			<li class="nav-item active"><a class="nav-link" href="login">Sign In
 					<span class="sr-only">(current)</span>
 			</a></li>
 			<li class="nav-item active"><a class="nav-link" href="register">Register
