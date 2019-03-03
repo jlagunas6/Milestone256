@@ -1,4 +1,6 @@
-@extends('masterlayout') @section('title', 'Sign In')
+@extends('layouts.masterlayout') 
+
+@section('title', 'Sign In')
 
 @section('content')
 <div>
@@ -6,8 +8,7 @@
 		<li><a href=register>Register</a></li>
 		<li><a href="#login">Sign In</a></li>
 	</ul>
-	</form>
-	<div id="login"></div>
+	<div id="login" align="center">
 	<h1>Sign in here!</h1>
 	<form action="dologin" method="POST">
 		<div>
@@ -21,5 +22,6 @@
 			<input name="login" value="Sign In" type="submit" /><br>
 		</div>
 	</form>
+	</div>
 </div>
 @endsection
