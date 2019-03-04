@@ -50,7 +50,7 @@ class LoginController extends Controller
                 $data = [
                     'model' => $user
                 ];
-                return view('loginPassed')->with($data);
+                return view('welcome')->with($data);
             } else {
                 return view('loginFailed');
             }
