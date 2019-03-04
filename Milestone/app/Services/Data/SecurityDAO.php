@@ -1,8 +1,9 @@
 <?php
 namespace App\Services\Data;
 
-use App\Services\Business\SecurityService;
-use App\Models\UsersModel;
+use App\Model\User;
+
+use Illuminate\Support\Facades\DB;
 
 class SecurityDAO
 {
@@ -13,18 +14,35 @@ class SecurityDAO
     public function __contruct($conn)
     {
         $this->conn = $conn;
+        return $this->conn;
     }
 
-    public function loginUser(UsersModel $user)
+    public function findUser(User $user)
     {
+        // get email and password from login user model
         $email = $user->getEmail();
         $password = $user->getPassword();
-        $stmt = $this->conn->prepare("SELECT * FROM USERS WHERE EMAIL LIKE ? AND PASSWORD LIKE ?");
-        $stmt->bind_param("ss", $email, $password);
-        $stmt->execute();
 
-        $result = $stmt->get_result();
+        // prepares sql statement
+        // adds user input data and executes statement
+        $stmt = DB::connection()->select('SELECT EMAIL, PASSWORD FROM USERS WHERE EMAIL = :email AND PASSWORD = :password', ['email'=>$email, 'password'=>$password]);
+        //TODO: 2.connection
+        /* $stmt = $this->conn->prepare("SELECT EMAIL, PASSWORD FROM USERS WHERE EMAIL LIKE ? AND PASSWORD LIKE ?");
+        $stmt->execute(array(
+            $email,
+            $password
+        )); */
+
+        // if user does not exist or info does not match return FALSE
+        // if user exists and info is correct return TRUE       
+/*         //TODO: 3.connection
+        $result = $stmt->fetch_all();
         if ($result->num_rows === 0) {
+            return FALSE;
+        } else {
+            return TRUE;
+        } */
+        if ($stmt==NULL) {
             return FALSE;
         } else {
             return TRUE;

@@ -1,21 +1,21 @@
 <?php
-namespace App\Models;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UsersModel extends Model
+class User extends Model
 {
     //user collums
     private $id;
-    private $first_name;   
+    private $first_name;
     private $middle_name;
     private $last_name;
     private $email;
-    private $password;   
-    private $admin_role;   
-    private $created_on;   
+    private $password;
+    private $admin_role;
+    private $created_on;
     private $active;
-
+    
     //user constructor
     public function __construct($id, $fn, $mn, $ln, $em, $pw, $ar, $co, $a)
     {
@@ -35,90 +35,90 @@ class UsersModel extends Model
     {
         return $this->id;
     }
-
+    
     public function setId($id)
     {
         $this->id = $id;
     }
-
+    
     public function getFirst_name()
     {
         return $this->first_name;
     }
-
+    
     public function setFirst_name($first_name)
     {
         $this->first_name = $first_name;
     }
-
+    
     public function getMiddle_name()
     {
         return $this->middle_name;
     }
-
+    
     public function setMiddle_name($middle_name)
     {
         $this->middle_name = $middle_name;
     }
-
+    
     public function getLast_name()
     {
         return $this->last_name;
     }
-
+    
     public function setLast_name($last_name)
     {
         $this->last_name = $last_name;
     }
-
+    
     public function getEmail()
     {
         return $this->email;
     }
-
+    
     public function setEmail($email)
     {
         $this->email = $email;
     }
-
+    
     public function getPassword()
     {
         return $this->password;
     }
-
+    
     public function setPassword($password)
     {
         $this->password = $password;
     }
-
+    
     public function getAdmin_role()
     {
         return $this->admin_role;
     }
-
+    
     public function setAdmin_role($admin_role)
     {
         $this->admin_role = $admin_role;
     }
-
+    
     public function getCreated_on()
     {
         return $this->created_on;
     }
-
+    
     public function setCreated_on($created_on)
     {
         $this->created_on = $created_on;
     }
-
+    
     public function getActive()
     {
         return $this->active;
     }
-
+    
     public function setActive($active)
     {
         $this->active = $active;
     }
-
+    
 }

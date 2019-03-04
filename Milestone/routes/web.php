@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\LoginController;
 
 /*
  * |--------------------------------------------------------------------------
@@ -26,4 +28,5 @@ Route::get('/login', 'PagesController@Login');
 //logs the user in; login controller
 Route::post('/dologin', 'LoginController@Authenticate');
 
+Route::get('/allusers', 'PagesController@allusers');
 

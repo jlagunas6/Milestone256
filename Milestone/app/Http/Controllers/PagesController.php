@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
@@ -14,5 +14,14 @@ class PagesController extends Controller
     //takes user to the login page
     public function Login(){
         return view('login');
+    }
+    
+    
+    
+    public function allusers()
+    {
+        $users = \App\Models\Users::all();
+        
+        return view('allusers', compact('users'));
     }
 }
