@@ -4,10 +4,6 @@
 
 @section('content')
 <div>
-	<ul>
-		<li><a href=register>Register</a></li>
-		<li><a href="#login">Sign In</a></li>
-	</ul>
 	<div id="login" align="center">
 	<h1>Sign in here!</h1>
 	<form action="dologin" method="POST">

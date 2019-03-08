@@ -5,8 +5,13 @@ use Illuminate\Http\Request;
 use App\Model\User;
 use App\Services\Business\SecurityService;
 Use Illuminate\Validation\ValidationException;
+
+//
+use App\Services\Business\UserService;
 use Exception;
+use PDOException;
 use Illuminate\Support\Facades\Log;
+
 
 class LoginController extends Controller
 {
@@ -47,11 +52,15 @@ class LoginController extends Controller
             // 4. Navigation
             // Render a failed or success response View and pass the UserModel to it
             if ($status) {
-                $data = [
-                    'model' => $user
-                ];
-                return view('welcome')->with($data);
+                $d = new UserService();
+                $data = $d->findByLogin($user);
+                if (session()->get('active') === 0){                 
+                    return view('userBlocked');
+                } else {
+                    return view('welcome');
+                }
             } else {
+                //TODO:: redirect to login page and alert script for ogin failed
                 return view('loginFailed');
             }
         } 
@@ -64,6 +73,10 @@ class LoginController extends Controller
             //
             //Catch and rethrow the Data Validation Exception (so we can catch all others in our next exception catch block)
             throw $e1;
+        }
+        catch(PDOException $e)
+        {
+            echo "Error: " . $e->getMessage();
         }
         //catch errors
 /*         catch (Exception $e) {

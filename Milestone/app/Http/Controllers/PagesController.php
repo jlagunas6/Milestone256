@@ -20,7 +20,7 @@ class PagesController extends Controller
     
     public function allusers()
     {
-        $users = \App\Models\Users::all();
+        $users = \App\Model\Users::all();
         
         return view('allusers', compact('users'));
     }

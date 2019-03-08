@@ -28,5 +28,6 @@ Route::get('/login', 'PagesController@Login');
 //logs the user in; login controller
 Route::post('/dologin', 'LoginController@Authenticate');
 
+
 Route::get('/allusers', 'PagesController@allusers');
 
