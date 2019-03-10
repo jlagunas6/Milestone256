@@ -13,6 +13,10 @@
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active"><a class="nav-link" href="blank">TBD <span
 					class="sr-only">(current)</span></a></li>
+<?php
+if (session()->has('admin_role')) {
+    if (session()->get('admin_role') === 0) {} else {
+        echo '
 			<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 				href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Administration </a>
@@ -22,14 +26,18 @@
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" id="blank" href="blank">TBD</a> <a
 						class="dropdown-item" id="blank" href="blank">TBD</a>
-
-				</div></li>
+                </li>
+			';
+    }
+}
+?>
+				
 			<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
 			</li>
 		</ul>
+	</div>
 			
 			<?php
-
 if (session()->has('id') == NULL) {
     echo "
     			<li class='nav-item active'><a class='nav-link' href='login'>Sign In
@@ -41,17 +49,24 @@ if (session()->has('id') == NULL) {
 			";
 } else {
     echo "
-                <li class='nav-item active'><a class='nav-link' href='profile'>" . session()->get('first_name') . " " . session()->get('last_name') . "
-    					<span class='sr-only'>(current)</span>
-    			</a></li>
+                <li class='nav-item dropdown'><a class='nav-link dropdown-toggle'
+				href='#' id='navbarDropdown' role='button' data-toggle='dropdown'
+				aria-haspopup='true' aria-expanded='false'> " . session()->get('first_name') . " " . session()->get('last_name') . " </a>
+				<div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+					<a class='dropdown-item' id='blank' href='profile'>Profile</a>
+                    <a class='dropdown-item' id='blank' href='blank'>Edit Contact</a>
+				<div class='dropdown-divider'></div>
+                     <a class='dropdown-item' id='blank' href='logout'>Logout</a>
+				</div></li>
+                
             ";
 }
 
 ?>
 			<form class="form-inline my-2 my-lg-0" action="blank">
-			<input class="form-control mr-sm-2" type="search"
-				placeholder="Search" aria-label="Search">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-		</form>
+		<input class="form-control mr-sm-2" type="search" placeholder="Search"
+			aria-label="Search">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	</form>
 	</div>
 </nav>
