@@ -54,7 +54,7 @@ class LoginController extends Controller
             if ($status) {
                 $d = new UserService();
                 $data = $d->findByLogin($user);
-                if (session()->get('active') === 0) {
+                if (session()->get('active') == 0) {
                     return view('userBlocked');
                 } else {
                     return view('welcome');
