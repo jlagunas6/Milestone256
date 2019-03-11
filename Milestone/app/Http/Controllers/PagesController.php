@@ -16,6 +16,11 @@ class PagesController extends Controller
         return view('login');
     }
     
+    //takes user to the registration page
+    public function Register(){
+        return view('registration');
+    }
+    
     
     
     public function allusers()

@@ -30,6 +30,11 @@ Route::post('/dologin', 'LoginController@Authenticate');
 //logs user out
 Route::get('/logout', 'LoginController@logout');
 
+//takes user to registration page
+Route::get('/register', 'PagesController@Register');
+//registers the user; registration controller
+Route::post('/doregister', 'RegistrationController@Register');
+
 
 Route::get('/allusers', 'PagesController@allusers');
 

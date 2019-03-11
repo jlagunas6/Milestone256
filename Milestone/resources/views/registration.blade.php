@@ -9,19 +9,19 @@
 	<form action="doregister" method="POST">
 	<input type="hidden" name="_token" value="<?php echo csrf_token()?>"/>
 	<div>
-			Email:<br> <input name="email" type="email" maxlength="25" required /><br>
+			First Name:<br> <input name="first_name" type="text" maxlength="25" placeholder ="REQUIRED" required /><br>
 		</div>
 		<div>
-			Email:<br> <input name="email" type="email" maxlength="25" required /><br>
+			Middle Name:<br> <input name="middle_name" type="text" maxlength="25" placeholder ="OPTIONAL" /><br>
 		</div>
 		<div>
-			Email:<br> <input name="email" type="email" maxlength="25" required /><br>
+			Last Name:<br> <input name="last_name" type="text" maxlength="25" placeholder ="REQUIRED" required /><br>
 		</div>
 		<div>
-			Email:<br> <input name="email" type="email" maxlength="25" required /><br>
+			Email:<br> <input name="email" type="email" maxlength="25" placeholder ="REQUIRED" required /><br>
 		</div>
 		<div>
-			Password:<br> <input name="password" type="password" maxlength="16"
+			Password:<br> <input name="password" type="password" placeholder ="REQUIRED" maxlength="16"
 				required /><br>
 		</div>
 		<div>
