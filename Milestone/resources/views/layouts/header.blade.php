@@ -15,7 +15,7 @@
 					class="sr-only">(current)</span></a></li>
 <?php
 if (session()->has('admin_role')) {
-    if (session()->get('admin_role') === 0) {} else {
+    if (session()->get('admin_role') == 0) {} else {
         echo '
 			<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 				href="#" id="navbarDropdown" role="button" data-toggle="dropdown"

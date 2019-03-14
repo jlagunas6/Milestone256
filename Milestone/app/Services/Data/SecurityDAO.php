@@ -2,9 +2,6 @@
 namespace App\Services\Data;
 
 use App\Model\User;
-use Illuminate\Support\Facades\DB;
-
-use PDO;
 
 class SecurityDAO
 {
