@@ -1,44 +1,41 @@
 <?php 
 namespace App\Services\Business;
+
 //TODO:: organize namespaces
-use App\Model\User;
+//overall
 use Illuminate\Support\Facades\Log;
 use PDO;
-use App\Services\Data\SecurityDAO;
+use App\Services\Data\AdminDAO;
 
 
 
-class SecurityService
+class AdminService
 {
-    public function authenticate(User $user)
+    public function allUsers()
     {
         //logging
-        Log::info("Entering SecurityService.authenticate()");
+        Log::info("Entering AdminService.allUsers()");
         
-        //BEST PRACTICE: externalize your application configuration
         //get credentials for the db
         $host = config("database.connections.mysql.host");
         $username = config("database.connections.mysql.username");
         $password = config("database.connections.mysql.password");
         $db = config("database.connections.mysql.database");
         
-        
-        //BEST PRACTICE: do not create db conn in DAO
         //create conn to pass through to DAO
-        $conn = new PDO("mysql:host=$host;dbname=$db", $username, $password);
+        $conn = new PDO("mysql:host=$host;dbname=$db", $username,$password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-     
         
         //create DAO with connection
         //call function to login user
-        $service = new SecurityDAO($conn);
-        $flag = $service->findUser($user);
+        $service = new AdminDAO($conn);
+        $allUsers = $service->allUsers();
         
         //end log
-        Log::info("Exiting SercurityService.authenticate() with ".$flag);
+        Log::info("Exiting AdminService.allUsers() with ");
         
-        //return DAO bool
-        return $flag;
+        //return DAO array
+        return $allUsers;
     }
 }
 

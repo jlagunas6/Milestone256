@@ -10,6 +10,7 @@
 	<input type="hidden" name="_token" value="<?php echo csrf_token()?>"/>
 	<div>
 			First Name:<br> <input name="first_name" type="text" maxlength="25" placeholder ="REQUIRED" required /><br>
+			{{ $errors->first('first_name') }}
 		</div>
 		<div>
 			Middle Name:<br> <input name="middle_name" type="text" maxlength="25" placeholder ="OPTIONAL" /><br>

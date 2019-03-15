@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-
+//TODO:: organize namespaces
 // overall
 use Illuminate\Http\Request;
 use App\Model\User;
@@ -9,7 +9,6 @@ use App\Services\Business\UserService;
 use Illuminate\Validation\ValidationException;
 // register
 use Exception;
-use PDOException;
 use App\Services\Business\SecurityService;
 
 class RegistrationController extends Controller
@@ -22,7 +21,7 @@ class RegistrationController extends Controller
         // BAD PRACTICE: not using a defined DATA VALIDATION FRAMEWORK, putting rules
         // over your code, doing only on Client Side or Database
         // Setup Data Validation Rules for Login Form
-        $rules = [ // 'first_name' => 'Required | Between:4,10 | Alpha',
+        $rules = [  'first_name' => 'Required | Between:4,10 | Alpha',
                     // 'first_name.required' => "Let's start with what's your first name?" | 'Between:2,25',
                     // 'last_name.required' => "Let's start with what's your last name?" | 'Between:2,25',
                     // 'email.required' => "We need your email, please!" | 'Email' |'Between:6,25',
@@ -40,8 +39,8 @@ class RegistrationController extends Controller
     {
         try {
             // TODO:: messages for validations
-            // Validate the Form Data (note will automatically redirect back to login view if error)
-            // $this->validateForm($request);
+             //Validate the Form Data (note will automatically redirect back to login view if error)
+             $this->validateForm($request);
 
             // Get the posted information
             $first_name = $request->input('first_name');
@@ -57,14 +56,14 @@ class RegistrationController extends Controller
             // create object model
             // save posted form data in user object model
             $user = new User(- 1, $first_name, $middle_name, $last_name, $email, $password, - 1, - 1, - 1);
-
+            
             // execute business service to check for existing account
             $securityService = new SecurityService();
             $status1 = $securityService->authenticate($user);
 
             // if duplicate failed, if no account exists then it creates account
             if ($status1) {
-                return view('duplicateUser');
+                return view('registration/duplicateUser');
             } else {
                 // execute business service to proceed to register
                 $userService = new UserService();
@@ -77,7 +76,7 @@ class RegistrationController extends Controller
                     return view('welcome');
                     // return view('profile');
                 } else {
-                    return view('registerFailed');
+                    return view('registration/registrationFailed');
                 }
             }
         } // catch rules errors
@@ -88,14 +87,9 @@ class RegistrationController extends Controller
             //
             // Catch and rethrow the Data Validation Exception (so we can catch all others in our next exception catch block)
             throw $messages;
-            echo $messages;
-            // foreach ($messages->all('<li>:message</li>') as $message) {
-            // echo $message;
-            // }
-        } // catch PDO errors
-        catch (PDOException $e) {
-            echo "Failed to get DB handle: " . $e->getMessage() . "\n";
-            exit();
+        } // TODO::catch exception errors/log
+        catch (Exception $e) {
+           return view('exception');
         }
     }
 }

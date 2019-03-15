@@ -13,20 +13,23 @@ class PagesController extends Controller
     
     //takes user to the login page
     public function Login(){
-        return view('login');
+        return view('login/login');
     }
     
     //takes user to the registration page
     public function Register(){
-        return view('registration');
+        return view('registration/registration');
+    }
+    
+    //TODO::profile function controller
+    
+    public function editContact(){
+        //return view('profile/editContact');
+        return view('profile/editContact');
     }
     
     
     
-    public function allusers()
-    {
-        $users = \App\Model\Users::all();
-        
-        return view('allusers', compact('users'));
-    }
+    
+
 }

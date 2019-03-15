@@ -1,10 +1,10 @@
 @extends('layouts.masterlayout')
 
-@section('title', 'Home')
+@section('title', 'Exception')
 
 @section('content')
 
-	<?php echo $data;?>
+	<h1>Exception thrown</h1>
 	
 	
 @endsection

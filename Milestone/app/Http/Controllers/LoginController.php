@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-
+//TODO:: organize namespaces
 //overall
 use Illuminate\Http\Request;
 use App\Model\User;
@@ -8,7 +8,6 @@ use App\Model\User;
 use App\Services\Business\SecurityService;
 use App\Services\Business\UserService;
 use Exception;
-use PDOException;
 //logout
 
 
@@ -43,9 +42,9 @@ class LoginController extends Controller
                     return view('welcome');
                 }
             } else {
-                return view('loginFailed');
+                return view('login/loginFailed');
             }
-        } // catch errors
+        } // TODO::catch errors
         catch (Exception $e) {
             // BEST PRACTICE: Catch all exceptions, log the exception, and display a common Error page (or use a Global Exception Handler)
             // Log exception and display Exception view
@@ -56,18 +55,13 @@ class LoginController extends Controller
                 'errorMsg' => $e->getMessage()
             ];
             return view('exception')->with($data); */
-        } //catch PDO errors
-        catch (PDOException $e) {
-            echo "Failed to get DB handle: " . $e->getMessage() . "\n";
-            exit;
         }
-            
-        
+                   
     }
 
     public function Logout(Request $request)
     {
         session()->flush();
-        return view('/login');
+        return view('login/login');
     }
 }

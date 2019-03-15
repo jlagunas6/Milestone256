@@ -1,11 +1,12 @@
 <?php 
 namespace App\Services\Business;
-
+//TODO:: organize namespaces
 //overall
 use App\Model\User;
 use Illuminate\Support\Facades\Log;
 use PDO;
 use App\Services\Data\UserDAO;
+use App\Model\Contact;
 
 
 
@@ -62,6 +63,32 @@ class UserService
         Log::info("Exiting UserService.register() with ".$flag);
         
         //return DAO bool
+        return $flag;
+    }
+    
+    public function updateContact(Contact $contact)
+    {
+        //logging
+        Log::info("Entering UserService.updateContact()");
+
+        //get credentials for the db
+        $host = config("database.connections.mysql.host");
+        $username = config("database.connections.mysql.username");
+        $password = config("database.connections.mysql.password");
+        $db = config("database.connections.mysql.database");
+        
+        //create conn to pass through to DAO
+        $conn = new PDO("mysql:host=$host;dbname=$db", $username,$password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        //db conn => DAO
+        $service = new UserDAO($conn);
+        $flag = $service->updateContact($contact);
+        
+        //close out log for function
+        Log::info("Exiting UserService.updateContact()");
+        
+        //return DAO boolean
         return $flag;
     }
 }

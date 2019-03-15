@@ -21,7 +21,7 @@ if (session()->has('admin_role')) {
 				href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Administration </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" id="blank" href="blank">TBD</a> <a
+					<a class="dropdown-item" id="all_users" href="allUsers">All Users</a> <a
 						class="dropdown-item" id="blank" href="blank">TBD</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" id="blank" href="blank">TBD</a> <a
@@ -53,8 +53,8 @@ if (session()->has('id') == NULL) {
 				href='#' id='navbarDropdown' role='button' data-toggle='dropdown'
 				aria-haspopup='true' aria-expanded='false'> " . session()->get('first_name') . " " . session()->get('last_name') . " </a>
 				<div class='dropdown-menu' aria-labelledby='navbarDropdown'>
-					<a class='dropdown-item' id='blank' href='profile'>Profile</a>
-                    <a class='dropdown-item' id='blank' href='blank'>Edit Contact</a>
+					<a class='dropdown-item' id='profile' href='profile'>Profile</a>
+                    <a class='dropdown-item' id='editContact' href='editContact'>Edit Contact</a>
 				<div class='dropdown-divider'></div>
                      <a class='dropdown-item' id='blank' href='logout'>Logout</a>
 				</div></ul>

@@ -35,6 +35,16 @@ Route::get('/register', 'PagesController@Register');
 //registers the user; registration controller
 Route::post('/doregister', 'RegistrationController@Register');
 
+//takes user to their profile
+//TODO::profile page
+//takes user to edit contact information
+Route::get('/editContact', 'PagesController@editContact');
+//updates users contact information
+Route::post('/updateContact', 'ProfileController@updateContact');
+
+//take admin to see all users
+Route::get('/allUsers', 'AdminController@allUsers');
+
 
 Route::get('/allusers', 'PagesController@allusers');
 
